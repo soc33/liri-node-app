@@ -100,7 +100,7 @@ function doWhatItSays() {
             console.log(err);
         }
         var parameters = data.split(", ");
-        console.log(parameters);
+        // console.log(parameters);
         chooseCase(parameters[0], parameters[1]);
     });
 };
@@ -108,7 +108,7 @@ function doWhatItSays() {
 function changeText(choice) {
     var changes = choice.split(" ");
     var chosen = changes.splice(1).join(" ");
-    console.log(changes);
+    console.log(changes + " " + chosen);
 
     fs.writeFile("random.txt", changes[0] + ', ' + chosen, function (err) {
         if (err) {
