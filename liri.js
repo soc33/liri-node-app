@@ -26,7 +26,7 @@ var chooseCase = function (argument1, argument2){
             changeText(argument2);
             break;
         case "help":
-            console.log("Available options are: concert-this + (band or artist name), spotify-this-song + (song name), movie-this + (movie name), or do-what-it-says");
+            console.log("Available options are: concert-this + (band or artist name), spotify-this-song + (song name), movie-this + (movie name), do-what-it-says, or change-text + (newcommand)");
             break;
         default:
             console.log("That was not a vaild parameter, type 'help' for current list of acceptable answers.");
@@ -50,6 +50,10 @@ function concertThis(artist) {
         });
 };
 
+var getArtist = function(artist) {
+    return artist.name;
+}
+
 function spotifyThis(song) {
     if (!song) {
         var song = "The Sign";
@@ -61,7 +65,7 @@ function spotifyThis(song) {
         }
         var information = data.tracks.items;
         for (i = 0; i < information.length; i++) {
-            console.log("The artist is: " + information[i].artists.name);
+            console.log("The artist is: " + information[i].artists.map(getArtist));
             console.log("The name of the song is: " + information[i].name);
             console.log("The link to a prview is: " + information[i].preview_url);
             console.log("The name of the album is: " + information[i].album.name);
@@ -95,7 +99,7 @@ function doWhatItSays() {
         if (err) {
             console.log(err);
         }
-        var parameters = data.split(",");
+        var parameters = data.split(", ");
         console.log(parameters);
         chooseCase(parameters[0], parameters[1]);
     });
@@ -106,7 +110,7 @@ function changeText(choice) {
     var chosen = changes.splice(1).join(" ");
     console.log(changes);
 
-    fs.writeFile("random.txt", changes[0] + ', "' + chosen + '"', function (err) {
+    fs.writeFile("random.txt", changes[0] + ', ' + chosen, function (err) {
         if (err) {
             console.log(err);
         }
