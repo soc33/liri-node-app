@@ -11,7 +11,7 @@
 ## LIRI can do **many** things like: 
  - tell you, that you're wrong:
  
- ![image of saying it is not a valid parameter](videos/invalid.mp4)
+ ![image of saying it is not a valid parameter](./videos/invalid.mp4)
  
  - tell you what your real options are:
  
