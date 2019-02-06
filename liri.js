@@ -50,10 +50,6 @@ function concertThis(artist) {
         });
 };
 
-var getArtist = function(artist) {
-    return artist.name;
-}
-
 function spotifyThis(song) {
     if (!song) {
         var song = "The Sign";
@@ -65,9 +61,9 @@ function spotifyThis(song) {
         }
         var information = data.tracks.items;
         for (i = 0; i < information.length; i++) {
-            console.log("The artist is: " + information[i].artists.map(getArtist));
+            console.log("The artist is: " + information[i].artists[0].name);
             console.log("The name of the song is: " + information[i].name);
-            console.log("The link to a prview is: " + information[i].preview_url);
+            console.log("The link to a preview is: " + information[i].preview_url);
             console.log("The name of the album is: " + information[i].album.name);
             console.log("----------------------------------------");
         }
